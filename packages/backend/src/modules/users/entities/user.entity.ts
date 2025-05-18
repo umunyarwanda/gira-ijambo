@@ -1,5 +1,5 @@
 import { EUserRole } from "src/shared/enums/EUserRole.enum";
-import { Column, DeleteDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('users')
 export class User {
@@ -27,12 +27,12 @@ export class User {
   @Column({ type: 'boolean', default: false })
   isActive: boolean;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @CreateDateColumn({ type: 'datetime' })
   createdAt: Date;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @UpdateDateColumn({ type: 'datetime' })
   updatedAt: Date;
   
-  @DeleteDateColumn()
+  @DeleteDateColumn({ type: 'datetime', nullable: true })
   deletedAt: Date;
 }
