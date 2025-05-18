@@ -4,7 +4,7 @@ const getHostUrl = () => {
     return host;
 }
 const isLocalHost = getHostUrl().startsWith("localhost");
-export const BASE_API_URL: string = isLocalHost ? 'http://localhost:3091/' : getHostUrl() == '' ? '' : '';
+export const BASE_API_URL: string = isLocalHost ? 'http://localhost:3091/' : 'https://gira-ijambo-production.up.railway.app/';
 export const LOGO_URL='https://res.cloudinary.com/umunyarwanda/image/upload/v1730154822/logo_yievnj.png';
 export const GIRA_IJAMBO_EMAIL = 'ourmail@mail.com'
 
