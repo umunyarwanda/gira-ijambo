@@ -1,0 +1,5 @@
+export enum EUserRole {
+  SUPER_ADMIN = 'SUPER_ADMIN',
+  AGENCY_ADMIN = 'AGENCY_ADMIN',
+  CITIZEN = 'CITIZEN',
+}

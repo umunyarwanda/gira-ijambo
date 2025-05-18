@@ -1,0 +1,113 @@
+// $black: #272727;
+// $primary-theme: #111827;
+// $secondary-theme: #1f2937;
+// $third-theme: #1d2432;
+
+:root {
+  --black: #272727;
+  --white: #ffffff;
+  // --blue: #0199e1;
+  --blue: #0588c5;
+  --blue-light: #1aadee;
+  // --blue-dark: #0077b6;
+  --blue-dark: #045f90;
+  --primary-theme: #111827;
+  --secondary-theme: #1f2937;
+  --third-theme: #2d384f;
+
+  // Background
+  --bg-primary: #f7f9fb;
+  --pale-blue: #ebf8ff;
+  --pale-gray: rgba(147, 146, 146, 0.164);
+
+  // Shadows
+  --shadow-bold: 0 3px 16px rgba(115, 110, 131, 0.25);
+  --shadow-primary: 0 3px 16px rgba(142, 134, 171, .25);
+  --shadow-secondary: 0 3px 16px rgba(142, 134, 171, .1);
+  // --shadow-secondary: 0 3px 16px rgba(142, 134, 171, .09);
+
+  // Overriding PrimeV
+  // --p-inputtext-focus-border-color: #1118278b !important; 
+  // --p-button-primary-background: var(--blue) !important;
+  // --p-button-primary-border-color: var(--blue) !important;
+  // --p-button-primary-hover-background: var(--primary-theme) !important;
+  // --p-button-primary-active-background: var(--blue) !important;
+  // --p-button-primary-active-border-color: var(--blue) !important;
+  // --p-button-primary-hover-border-color: var(--secondary-theme) !important;
+
+  // PrimeVue Icon
+  --p-icon-size: .9rem !important;
+
+  // PrimeVue Datepicker
+  --p-datepicker-date-width: 1.8rem !important;
+  --p-datepicker-date-height: 1.8rem !important;
+  --p-datepicker-date-selected-background: var(--blue) !important;
+  --p-datepicker-date-range-selected-background: var(--pale-blue) !important;
+  --p-datepicker-date-range-selected-color: var(--blue) !important;
+
+  // PrimeVue Toast
+  --p-toast-summary-font-size: .85rem !important;
+  --p-toast-text-gap: 1px !important;
+  --p-toast-detail-font-size: .85rem !important;
+
+  // PrimeVue Tag
+  --p-tag-font-size: .8rem !important;
+
+  // PrimeVue Button
+  --p-button-primary-background: var(--blue) !important;
+  --p-button-primary-border-color: var(--blue) !important;
+  --p-button-primary-hover-background: var(--blue-dark) !important;
+  --p-button-primary-active-background: var(--blue) !important;
+  --p-button-primary-active-border-color: var(--blue) !important;
+  --p-button-primary-hover-border-color: var(--blue-dark) !important;
+
+  --p-button-outlined-primary-border-color: var(--blue) !important;
+  --p-button-outlined-primary-color: var(--blue) !important;
+  --p-button-outlined-primary-hover-border-color: var(--blue) !important;
+  --p-button-outlined-primary-hover-background: var(--pale-blue) !important;
+  --p-button-outlined-primary-active-background: var(--pale-blue) !important;
+
+  --p-button-success-background: var(--blue) !important;
+  --p-button-success-border-color: var(--blue) !important;
+  --p-button-success-hover-background: var(--blue-dark) !important;
+  --p-button-success-hover-border-color: var(--blue-dark) !important;
+  --p-button-success-active-background: var(--blue) !important;
+  --p-button-success-active-border-color: var(--blue) !important;
+
+  // PrimeVue Paginator
+  --p-paginator-nav-button-selected-background: var(--pale-blue) !important;
+  --p-paginator-nav-button-selected-color: var(--blue) !important;
+
+  // PrimeVue Select
+  --p-select-focus-border-color: var(--blue) !important; 
+  --p-select-option-selected-background: var(--blue) !important;
+  --p-select-option-selected-color: var(--white) !important;
+  --p-select-option-selected-focus-background: var(--pale-blue) !important;
+  --p-select-option-selected-focus-color: var(--blue) !important;
+
+  // PrimeVue Inputs
+  --p-inputtext-focus-border-color: var(--blue) !important;
+
+  --p-checkbox-checked-background: var(--blue) !important;
+  --p-checkbox-checked-border-color: var(--blue) !important;
+  --p-checkbox-checked-hover-background: var(--blue-dark) !important;
+  --p-checkbox-checked-hover-border-color: var(--blue-dark) !important;
+
+  --p-toggleswitch-checked-background: var(--blue) !important;
+  --p-toggleswitch-checked-hover-background: var(--blue-light) !important;
+
+  --p-inputtext-background: var(--white) !important;
+  --p-inputtext-color: var(--black) !important;
+  --p-inputtext-border-color: var(--pale-gray) !important;
+  --p-inputtext-padding-y: 0.6rem !important;
+
+  // PrimeVue ProgressSpinner
+  --p-progressspinner-color-one: var(--blue-dark) !important;
+  --p-progressspinner-color-two: var(--blue-dark) !important;
+  --p-progressspinner-color-three: var(--blue-dark) !important;
+  --p-progressspinner-color-four: var(--blue-dark) !important;
+
+  // PrimeVue DataTable
+  --p-datatable-header-cell-selected-background: var(--pale-blue) !important;
+  --p-datatable-header-cell-selected-color: var(--blue) !important;
+}
