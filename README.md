@@ -14,12 +14,9 @@
 
 - [Overview](#overview)
 - [Features](#features)
-- [Screenshots](#screenshots)
 - [Tech Stack](#tech-stack)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [Acknowledgments](#acknowledgments)
 
 ---
 
@@ -33,28 +30,8 @@
 
 - **Submit Feedback:** Easily submit ideas or complaints to government agencies.
 - **Track Responses:** Monitor the status of submissions in real-time using unique ticket IDs.
-- **Receive Notifications:** Stay informed with email and SMS updates at each stage.
 - **Agency Dashboard:** Government teams can manage, respond, and report on submissions.
-- **Localization:** Fully available in Kinyarwanda, with optional English support.
 - **Responsive Design:** Accessible on both web and mobile devices.
-
----
-
-## 📸 Screenshots
-
-### Home Page
-
-![Home Page](images/home.png)
-
-### Submission Form
-
-![Submission Form](images/submission_form.png)
-
-### Tracking Dashboard
-
-![Tracking Dashboard](images/tracking_dashboard.png)
-
----
 
 ## 🛠️ Tech Stack
 
@@ -73,10 +50,8 @@
 - **ORM:** TypeORM
 - **Authentication:** JWT (JSON Web Tokens)
 - **API Documentation:** Swagger
+- **AI:** QROQ
 
-### Notifications
-
-- **Email:** SendGrid
 
 ---
 
@@ -93,41 +68,38 @@ To set up the project locally:
 2. **Install dependencies:**
    ```bash
    # Install frontend dependencies
-   cd frontend
-   npm install
+   cd packages/frontend
+   pnpm install
 
    # Install backend dependencies
-   cd ../backend
-   npm install
+   cd ../packages/backend
+   pnpm install
    ```
 
 3. **Set up environment variables:**
    ```bash
    # Frontend (.env)
-   VITE_API_URL=http://localhost:3000
-   VITE_APP_NAME=Gira Ijambo
+   Check the .env.example file for the frontend environment variables
 
    # Backend (.env)
-   DATABASE_URL=mysql://user:password@localhost:3306/gira_ijambo
-   JWT_SECRET=your_jwt_secret
-   SENDGRID_API_KEY=your_sendgrid_api_key
+   Check the .env.example file for the backend environment variables
    ```
 
 4. **Start the development servers:**
    ```bash
    # Start backend server
-   cd backend
-   npm run start:dev
+   cd packages/backend
+   pnpm run serve
 
    # Start frontend server (in a new terminal)
-   cd frontend
-   npm run dev
+   cd packages/frontend
+   pnpm run serve
    ```
 
 5. **Access the application:**
    - Frontend: http://localhost:5173
-   - Backend API: http://localhost:3000
-   - API Documentation: http://localhost:3000/api
+   - Backend API: http://localhost:3091
+   - API Documentation: http://localhost:3091/swagger
 
 ---
 
@@ -144,22 +116,3 @@ The application is configured for deployment on Vercel (frontend) and Railway (b
    - Connect your GitHub repository to Railway
    - Configure environment variables
    - Deploy
-
----
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## 🙏 Acknowledgments
-
-- Tech Associates Program for organizing the hackathon
-- All contributors and mentors who provided guidance
-- The open-source community for their invaluable tools and resources
-   
