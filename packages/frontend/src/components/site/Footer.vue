@@ -14,10 +14,10 @@
         </p>
         <ul class="site-footer__contact">
           <li>
-            <a href="tel:+250781234567"><ion-icon name="call-outline"></ion-icon> +250 781 234 567</a>
+            <a href="tel:+0785324625"><ion-icon name="call-outline"></ion-icon> +250 785 324 625</a>
           </li>
           <li>
-            <a href="mailto:info@gira-ijambo.vercel.app"><ion-icon name="mail-outline"></ion-icon> info@gira-ijambo.vercel.app</a>
+            <a href="mailto:mugabohussein0@gmail.com"><ion-icon name="mail-outline"></ion-icon> mugabohussein0@gmail.com</a>
           </li>
           <li>
             <a href="https://goo.gl/maps/1234567890" target="_blank" rel="noopener"><ion-icon name="location-outline"></ion-icon> Kigali, Rwanda</a>
