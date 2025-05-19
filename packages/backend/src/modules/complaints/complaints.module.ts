@@ -12,6 +12,9 @@ import { Response } from './entities/responses.entity';
   imports: [TypeOrmModule.forFeature([Complaint, Agency, Category, User, Response])],
   controllers: [ComplaintsController],
   providers: [ComplaintsService],
-  exports: [ComplaintsService],
+  exports: [
+    ComplaintsService,
+    TypeOrmModule
+  ],
 })
 export class ComplaintsModule {}

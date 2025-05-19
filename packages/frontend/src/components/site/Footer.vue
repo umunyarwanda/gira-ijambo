@@ -14,10 +14,10 @@
         </p>
         <ul class="site-footer__contact">
           <li>
-            <a href="tel:+250788500000"><ion-icon name="call-outline"></ion-icon> +250 788 500 000</a>
+            <a href="tel:+250781234567"><ion-icon name="call-outline"></ion-icon> +250 781 234 567</a>
           </li>
           <li>
-            <a href="mailto:info@irekure.rw"><ion-icon name="mail-outline"></ion-icon> info@irekure.rw</a>
+            <a href="mailto:info@gira-ijambo.vercel.app"><ion-icon name="mail-outline"></ion-icon> info@gira-ijambo.vercel.app</a>
           </li>
           <li>
             <a href="https://goo.gl/maps/1234567890" target="_blank" rel="noopener"><ion-icon name="location-outline"></ion-icon> Kigali, Rwanda</a>
@@ -85,13 +85,18 @@
     gap: 2.5rem;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 20px;
     flex-wrap: wrap;
   }
   &__brand {
     flex: 1.5;
     min-width: 260px;
     max-width: 350px;
+
+    @media (max-width: 600px) {
+      min-width: 100%;
+      width: 100%;
+    }
   }
   &__desc {
     font-size: .97rem;
@@ -130,12 +135,22 @@
     display: flex;
     flex: 3;
     justify-content: space-between;
-    gap: 2.5rem;
+    gap: 20px;
     min-width: 400px;
     flex-wrap: wrap;
+
+    @media (max-width: 600px) {
+      min-width: 100%;
+      width: 100%;
+    }
     > div {
       min-width: 140px;
       margin-bottom: 1.2rem;
+
+      @media (max-width: 507px) {
+        min-width: 100%;
+        width: 100%;
+      }
     }
     h4 {
       font-size: 1rem;
@@ -183,7 +198,7 @@
   &__bottom {
     border-top: 1px solid #e2e8f0;
     margin-top: 2.5rem;
-    padding: 20px 0;
+    padding: 20px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -209,32 +224,32 @@
     }
   }
 }
-@media (max-width: 900px) {
-  .site-footer__container {
-    flex-direction: column;
-    gap: 2rem;
-    align-items: flex-start;
-  }
-  .site-footer__links {
-    flex-wrap: wrap;
-    gap: 1.5rem;
-  }
-  .site-footer__bottom {
-    flex-direction: column;
-    gap: 0.7rem;
-    align-items: flex-start;
-  }
-}
-@media (max-width: 600px) {
-  .site-footer__container {
-    padding: 0 0.5rem;
-  }
-  .site-footer__links {
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-  .site-footer__bottom {
-    padding: 1.2rem 0.5rem 0.2rem 0.5rem;
-  }
-}
+// @media (max-width: 900px) {
+//   .site-footer__container {
+//     flex-direction: column;
+//     gap: 2rem;
+//     align-items: flex-start;
+//   }
+//   .site-footer__links {
+//     flex-wrap: wrap;
+//     gap: 1.5rem;
+//   }
+//   .site-footer__bottom {
+//     flex-direction: column;
+//     gap: 0.7rem;
+//     align-items: flex-start;
+//   }
+// }
+// @media (max-width: 600px) {
+//   .site-footer__container {
+//     padding: 0 0.5rem;
+//   }
+//   .site-footer__links {
+//     flex-direction: column;
+//     gap: 1.2rem;
+//   }
+//   .site-footer__bottom {
+//     padding: 1.2rem 0.5rem 0.2rem 0.5rem;
+//   }
+// }
 </style> 

@@ -14,7 +14,7 @@
                 <InputText id="name" v-model="formPayload.name" required />
               </div>
               <div class="form-group-item">
-                <label for="email">Email</label>
+                <label for="email">Email <small title="This field is required">*</small></label>
                 <InputText id="email" v-model="formPayload.email" type="email" />
               </div>
             </div>
@@ -207,7 +207,6 @@ onMounted(async () => {
 }
 
 .form-group-w-title {
-  margin-bottom: 1.5rem;
 
   h4 {
     margin: 1rem 0;
@@ -234,6 +233,10 @@ onMounted(async () => {
         color: red;
       }
     }
+
+    :deep(textarea) {
+      width: 100%;
+    }
   }
 }
 
@@ -241,6 +244,5 @@ onMounted(async () => {
   display: flex;
   gap: 1rem;
   justify-content: flex-end;
-  margin-top: 2rem;
 }
 </style> 

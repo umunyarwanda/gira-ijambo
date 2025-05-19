@@ -51,6 +51,11 @@ export enum CategoriesActionTypes {
   CATEGORIES_GETTER = 'CATEGORIES_GETTER',
 }
 
+export enum AnalyticsActionTypes {
+  GET_ANALYTICS = 'GET_ANALYTICS',
+  GET_AI_INSIGHTS = 'GET_AI_INSIGHTS',
+}
+
 export enum UsersActionTypes {
   GET_USERS = 'GET_USERS',
   CREATE_USER = 'CREATE_USER',

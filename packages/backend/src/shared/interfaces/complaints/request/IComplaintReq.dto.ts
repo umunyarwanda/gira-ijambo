@@ -4,9 +4,9 @@ export interface ICreateComplaintReq {
   names: string;
   title: string;
   telephone: string;
-  email?: string;
+  email?: string | null;
   description: string;
-  categoryId: number;
+  categoryId: number | null;
 }
 
 export interface IUpdateComplaintReq extends ICreateComplaintReq {

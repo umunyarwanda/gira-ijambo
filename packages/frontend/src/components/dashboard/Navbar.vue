@@ -1,10 +1,15 @@
 <template>
   <aside class="navbar">
     <div class="navbar-inner">
-      <div class="logo navbar-logo">
-        <span class="logo-main">Gira</span>
-        <span class="logo-dot">.</span>
-        <span class="logo-bold">Ijambo</span>
+      <div class="navbar-header">
+        <div class="logo navbar-logo">
+          <span class="logo-main">Gira</span>
+          <span class="logo-dot">.</span>
+          <span class="logo-bold">Ijambo</span>
+        </div>
+        <button class="navbar-toggle" @click="globalStore.toggleNav">
+          <span class="material-symbols-rounded">close</span>
+        </button>
       </div>
       <div class="navbar-main">
         <router-link to="/dashboard" class="navbar-item">
@@ -39,10 +44,10 @@
         </div>
         <div class="navbar-group">
           <h2>My Account</h2>
-          <router-link to="/profile" class="navbar-item">
+          <!-- <router-link to="/profile" class="navbar-item">
             <span class="material-symbols-rounded">person</span>
             Profile
-          </router-link>
+          </router-link> -->
           <button @click="logout" class="navbar-item">
             <span class="material-symbols-rounded">logout</span>
             Logout
@@ -61,8 +66,10 @@
   import { rolesPermissions } from '@shared/constants/auth/roles.constants';
   import { EUserRole } from '@shared/enums/EUserRole.enum';
   import { permissions } from "@shared/constants/auth/permissions.constants";
+import { useGlobalStore } from '@/stores/global';
 
   const authStore = useAuthStore();
+  const globalStore = useGlobalStore();
 
   const logout = () => {
     authStore[AuthActionTypes.LOGOUT]();
@@ -83,11 +90,44 @@
       height: 100%;
       background-color: var(--white);
       visibility: visible;
+
+      .navbar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 10px 2px;
+
+        .navbar-toggle {
+          border: none;
+          background-color: transparent;
+          cursor: pointer;
+          font-size: 1.5rem;
+          width: 37px;
+          height: 37px;
+          background: rgba(215, 215, 215, 0.5);
+          color: var(--blue-dark);
+          border-radius: 50%;
+          align-items: center;
+          justify-content: center;
+          display: none;
+
+          @media (max-width: 800px) {
+            display: flex;
+          }
+
+          &:hover {
+            background: rgba(215, 215, 215, 0.7);
+          }
+          
+        }
+        
+      }
       .navbar-logo {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 12px 5px 2px;
+        // padding: 12px 5px 2px;
+        font-size: 1.5rem;
   
         img {
           width: 100px;

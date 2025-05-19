@@ -18,6 +18,9 @@ import { User } from './modules/users/entities/user.entity';
 import { AgenciesModule } from './modules/agencies/agencies.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { ComplaintsModule } from './modules/complaints/complaints.module';
+import { AnalyticsService } from './modules/analytics/analytics.service';
+import { AnalyticsController } from './modules/analytics/analytics.controller';
+import { AnalyticsModule } from './modules/analytics/analytics.module';
 
 @Module({
   imports: [
@@ -61,9 +64,10 @@ import { ComplaintsModule } from './modules/complaints/complaints.module';
     AgenciesModule,
     CategoriesModule,
     ComplaintsModule,
+    AnalyticsModule,
   ],
-  controllers: [],
-  providers: [],
+  controllers: [AnalyticsController],
+  providers: [AnalyticsService],
 })
 export class AppModule {
   constructor(@InjectEntityManager() private entityManager: EntityManager) { }

@@ -3,7 +3,7 @@
     <div class="section-container">
       <div class="hero__content">
         <h1 class="hero__title">
-          Gira Ijambo, ugeza ikibazo cyawe kuri Leta, gikemurwe mu buryo bworoshye
+          Gira Ijambo, geza ikibazo cyawe kuri Leta, gikemurwe mu buryo bworoshye
         </h1>
         <p class="hero__subtitle">
           <b>Gira Ijambo</b>, umuyoboro wizewe wo kugeza igitekerezo n’ikibazo cyawe kuri Leta, ndetse no gukurikirana ikibazo cyawe kugeza gikemuwe, mu buryo bworoshye
@@ -63,7 +63,7 @@
     <div class="section-container">
       <div class="actions-cards__header">
         <ion-icon name="flash-outline" class="actions-cards__header-icon"></ion-icon>
-        <h2 class="actions-cards__header-title">Biroroshye, nawe wabyikorera</h2>
+        <h2 class="section-title">Biroroshye, nawe wabyikorera</h2>
         <div class="actions-cards__header-divider"></div>
       </div>
       <div class="actions-cards__container">
@@ -80,9 +80,9 @@
             <li><ion-icon name="send-outline"></ion-icon> Uhabwe kode iranga ikibazo cyawe</li>
             <li><ion-icon name="checkmark-done-outline"></ion-icon> Kurikirana aho ikibazo cyawe kigeze gikemurwa</li>
           </ul>
-          <button class="actions-cards__button actions-cards__button--primary">
-            Kanda hanoo utange ikibazo gishya <ion-icon name="paper-plane-outline"></ion-icon>
-          </button>
+          <router-link :to="{name: 'submit-complaint'}" class="actions-cards__button actions-cards__button--primary">
+            Kanda hano utange ikibazo gishya <ion-icon name="paper-plane-outline"></ion-icon>
+          </router-link>
         </div>
         <div class="actions-cards__card actions-cards__card--track">
           <div class="actions-cards__icon-wrap actions-cards__icon-wrap--blue">
@@ -97,9 +97,9 @@
             <li><ion-icon name="time-outline"></ion-icon> Kurikirana aho igisubizo kigeze</li>
             <li><ion-icon name="notifications-outline"></ion-icon> Ubone ibisubizo byatanzwe n'inzego za Leta</li>
           </ul>
-          <button class="actions-cards__button actions-cards__button--outline">
+          <router-link :to="{name: 'site-complaints'}" class="actions-cards__button actions-cards__button--outline">
             Kanda hano ukurikirane ikibazo cyawe watanze <ion-icon name="search-outline"></ion-icon>
-          </button>
+          </router-link>
         </div>
       </div>
     </div>
@@ -252,7 +252,7 @@ const getComplaint = async () => {
     toast.add({
       severity: 'error',
       summary: 'Error',
-      detail: 'Ikibazo sasubizo nta nzego z\'ibisubizo',
+      detail: 'Shyiramo kode y\'ikibazo cyawe',
       life: 3000
     });
     return;
@@ -269,7 +269,7 @@ const getComplaint = async () => {
     toast.add({
       severity: 'error',
       summary: 'Error',
-      detail: 'Ikibazo sasubizo nta nzego z\'ibisubizo',
+      detail: 'Kode y\'ikibazo cyawe ntibashije kuboneka, Ongera ugerageze',
       life: 3000
     });
   } finally {
@@ -287,9 +287,13 @@ const getComplaint = async () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  // background: url('@/assets/images/hero-bg.avif');
   background-size: cover;
   background-position: center;
+
+  @media (max-width: 780px) {
+    min-height: unset;
+    padding: 170px 0 70px;
+  }
 
   &__content {
     display: flex;
@@ -307,15 +311,39 @@ const getComplaint = async () => {
     color: var(--blue);
     margin-bottom: 1.2rem;
     line-height: 1.2;
+
+    @media (max-width: 946px) {
+      width: 80%;
+      font-size: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      width: 90%;
+      font-size: 1.8rem;
+    }
+
+    @media (max-width: 550px) {
+      width: 95%;
+      font-size: 1.4rem;
+    }
   }
 
   &__subtitle {
     font-size: 1.1rem;
     color: #555;
-    margin-bottom: 2.5rem;
+    margin-bottom: 30px;
     font-weight: 500;
     max-width: 600px;
 
+    @media (max-width: 946px) {
+      width: 80%;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      width: 90%;
+      font-size: 1rem;
+    }
     
     b {
       font-weight: 900;
@@ -327,6 +355,10 @@ const getComplaint = async () => {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 550px) {
+      width: 90%;
+    }
     
     &-form {
       display: flex;
@@ -336,10 +368,17 @@ const getComplaint = async () => {
       border-radius: 2rem;
       box-shadow: 0 0 100px -10px rgba(0, 0, 0, 0.362);
       background: var(--white);
-      // max-width: 700px;
       padding: 5px;
       justify-content: center;
       position: relative;
+
+      @media (max-width: 550px) {
+        flex-direction: column;
+        gap: 10px;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+      }
   
       &-input-container {
         position: relative;
@@ -357,6 +396,14 @@ const getComplaint = async () => {
         outline: none;
         transition: border 0.2s;
         min-width: 270px;
+
+        @media (max-width: 550px) {
+          min-width: unset;
+          width: 100%;
+          border: 1px solid var(--blue);
+          background: var(--white);
+          box-shadow: 0 0 100px -10px rgba(0, 0, 0, 0.362);
+        }
         &:focus {
           border-color: var(--blue-dark);
         }
@@ -397,7 +444,13 @@ const getComplaint = async () => {
       display: flex;
       align-items: center;
       gap: 0.7rem;
-      margin-top: 1.2rem;
+      margin-top: 20px;
+
+      @media (max-width: 550px) {
+        flex-direction: column;
+        gap: 10px;
+      }
+
       span {
         font-size: 1rem;
         font-weight: 600;
@@ -439,32 +492,11 @@ const getComplaint = async () => {
   }
 }
 
-@media (max-width: 600px) {
-  .hero__title {
-    font-size: 2rem;
-  }
-  .hero__subtitle {
-    font-size: 1rem;
-  }
-  .hero__form {
-    flex-direction: column;
-    gap: 0.5rem;
-    max-width: 100%;
-  }
-  .hero__input {
-    width: 100%;
-    font-size: 0.95rem;
-  }
-  .hero__cta {
-    font-size: 1rem;
-    padding: 0.7rem 1.5rem;
-  }
-}
 
 .how-it-works {
   width: 100%;
   background: #fafbfc;
-  padding: 3rem 0 2rem 0;
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -494,7 +526,7 @@ const getComplaint = async () => {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 2.5rem;
+    gap: 20px;
     flex-wrap: wrap;
     width: 100%;
     margin: 0 auto;
@@ -504,7 +536,7 @@ const getComplaint = async () => {
     flex-direction: column;
     align-items: center;
     width: 210px;
-    margin-bottom: 2rem;
+    margin-bottom: 20px;
   }
   &__circle {
     background: linear-gradient(45deg, var(--blue-dark), var(--blue-light));
@@ -552,33 +584,11 @@ const getComplaint = async () => {
     margin-bottom: 0.2rem;
   }
 }
-@media (max-width: 900px) {
-  .how-it-works__steps {
-    gap: 1.2rem;
-  }
-  .how-it-works__step {
-    width: 170px;
-  }
-}
-@media (max-width: 600px) {
-  .how-it-works__steps {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-  .how-it-works__step {
-    width: 100%;
-    max-width: 350px;
-  }
-  .how-it-works__title {
-    font-size: 1.5rem;
-  }
-}
 
 .stats {
   width: 100%;
   background: #f7fafc;
-  padding: 2rem 0 2rem 0;
+  padding: 40px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -605,15 +615,15 @@ const getComplaint = async () => {
     margin: 0 auto 0.5rem auto;
   }
   &__cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
     justify-content: center;
     align-items: stretch;
-    gap: 2.5rem;
+    gap: 20px;
     flex-wrap: wrap;
     width: 100%;
     margin: 0 auto;
   }
+
   &__card {
     background: #fff;
     border-radius: 20px;
@@ -688,34 +698,11 @@ const getComplaint = async () => {
     font-weight: 400;
   }
 }
-@media (max-width: 900px) {
-  .stats__cards {
-    gap: 1.2rem;
-  }
-  .stats__card {
-    min-width: 200px;
-    padding: 2rem 1.2rem 1.5rem 1.2rem;
-  }
-}
-@media (max-width: 600px) {
-  .stats__cards {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-  .stats__card {
-    width: 100%;
-    max-width: 350px;
-  }
-  .stats__title {
-    font-size: 1.5rem;
-  }
-}
 
 .actions-cards {
   width: 100%;
   background: transparent;
-  padding: 1rem 0 2rem 0;
+  padding: 30px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -749,31 +736,36 @@ const getComplaint = async () => {
     margin: 0 auto 0.5rem auto;
   }
   &__container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     justify-content: center;
     align-items: stretch;
     gap: 2.5rem;
     flex-wrap: wrap;
     width: 100%;
     max-width: 1100px;
+    padding: 0 20px;
     margin: 0 auto;
+
+    @media (max-width: 600px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
   &__card {
     background: rgba(255,255,255,0.85);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
     border-radius: 2rem;
-    padding: 2.2rem 2rem 2rem 2rem;
+    padding: 30px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    // min-width: 320px;
-    // max-width: 480px;
-    flex: 1 1 350px;
+    // flex: 1 1 350px;
     position: relative;
     text-align: center;
     backdrop-filter: blur(4px);
     border: 1.5px solid #eaf3fa;
     transition: box-shadow 0.2s, transform 0.2s;
+    width: 100%;
     &:hover {
       box-shadow: 0 16px 48px 0 #eaf3fa;
       transform: translateY(-4px) scale(1.02);
@@ -804,7 +796,7 @@ const getComplaint = async () => {
     text-align: center;
   }
   &__desc {
-    font-size: .97rem;
+    font-size: .96rem;
     color: #222;
     margin-bottom: 1.2rem;
     font-weight: 500;
@@ -862,31 +854,31 @@ const getComplaint = async () => {
     }
   }
 }
-@media (max-width: 900px) {
-  .actions-cards__container {
-    gap: 1.2rem;
-  }
-  .actions-cards__card {
-    min-width: 220px;
-    padding: 1.5rem 1rem 1.2rem 1rem;
-  }
-}
-@media (max-width: 600px) {
-  .actions-cards__container {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-  .actions-cards__card {
-    width: 100%;
-    max-width: 400px;
-  }
-}
+// @media (max-width: 900px) {
+//   .actions-cards__container {
+//     gap: 1.2rem;
+//   }
+//   .actions-cards__card {
+//     min-width: 220px;
+//     padding: 1.5rem 1rem 1.2rem 1rem;
+//   }
+// }
+// @media (max-width: 600px) {
+//   .actions-cards__container {
+//     flex-direction: column;
+//     align-items: center;
+//     gap: 1.5rem;
+//   }
+//   .actions-cards__card {
+//     width: 100%;
+//     max-width: 400px;
+//   }
+// }
 
 .gov-institutions {
   width: 100%;
   background: #fafbfc;
-  padding: 3rem 0 2rem 0;
+  padding: 40px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -920,18 +912,18 @@ const getComplaint = async () => {
     margin: 0 auto 0.5rem auto;
   }
   &__cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    // grid-template-columns: repeat(4, 1fr);
     justify-content: center;
     align-items: stretch;
-    gap: 2.5rem;
+    gap: 20px;
     flex-wrap: wrap;
     width: 100%;
     margin: 0 auto;
   }
   &__card {
     border-radius: 20px;
-    padding: 2.5rem 2.2rem 2rem 2.2rem;
+    padding: 20px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -999,20 +991,11 @@ const getComplaint = async () => {
   }
 }
 @media (max-width: 900px) {
-  .gov-institutions__cards {
-    gap: 1.2rem;
-  }
   .gov-institutions__card {
     min-width: 200px;
-    padding: 2rem 1.2rem 1.5rem 1.2rem;
   }
 }
 @media (max-width: 600px) {
-  .gov-institutions__cards {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
   .gov-institutions__card {
     width: 100%;
     max-width: 350px;

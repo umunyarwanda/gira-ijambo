@@ -199,6 +199,7 @@ export class ComplaintsService {
         },
         relations: {
           agency: true,
+          category: true,
           response: true
         }
       });

@@ -25,6 +25,9 @@ export const useAgenciesStore = defineStore('agencies', {
       return axios({
         method: 'POST',
         url: BASE_API_URL + AgencyApiUrl.CONTROLLER + AgencyApiUrl.CREATE_AGENCY,
+        headers: {
+          Authorization: `Bearer ${authStore[AuthActionTypes.AUTH_TOKEN]}`
+        },
         data: payload
       })
     },

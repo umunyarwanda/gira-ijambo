@@ -36,7 +36,7 @@
           <span><strong>Byanditswe Tariki: </strong>{{ dayjs(complaintResponse.createdAt).format('DD/MM/YYYY HH:mm') }}</span>
           <span><strong>Ikibazo cyashyikirijwe: </strong> {{ complaintResponse.agency?.name || 'N/A' }}</span>
           <span><strong>Ikiciro: </strong> {{ complaintResponse.category?.name || 'N/A' }}</span>
-          <span><strong>Mwasubijwe Tariki: </strong>{{ dayjs(complaintResponse.updatedAt).format('DD/MM/YYYY HH:mm') || 'N/A' }}</span>
+          <span v-if="complaintResponse.response"><strong>Mwasubijwe Tariki: </strong>{{ dayjs(complaintResponse.response?.createdAt).format('DD/MM/YYYY HH:mm') || 'N/A' }}</span>
         </div>
 
         <div class="complaint-detail__actions">
@@ -62,6 +62,11 @@
           Ongera ugerageze
           <ion-icon name="refresh-outline"></ion-icon>
         </button>
+
+        <router-link :to="{ name: 'site-complaints' }" class="complaint-detail__error-link">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+          <span>Shyiramo indi kode</span>
+        </router-link>
       </div>
     </div>
   </section>
@@ -99,7 +104,7 @@ const getComplaint = async () => {
     toast.add({
       severity: 'error',
       summary: 'Error',
-      detail: 'Ikibazo sasubizo nta nzego z\'ibisubizo',
+      detail: 'Kode y\'ikibazo cyawe ntibashije kuboneka, Ongera ugerageze',
       life: 3000
     });
   } finally {
@@ -116,11 +121,11 @@ onMounted(() => {
 .complaint-detail {
   width: 100%;
   background: #fff;
-  padding: 2rem 0 2rem 0;
+  padding: 20px 15px;
   &__card {
     background: #edf1f4af;
     border-radius: 1.2rem;
-    padding: 2.2rem 2rem 2rem 2rem;
+    padding: 30px 20px;
     max-width: 900px;
     margin: 0 auto;
     display: flex;
@@ -132,7 +137,13 @@ onMounted(() => {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 0.2rem;
-    gap: 1.2rem;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    @media (max-width: 500px) {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
   }
   &__title {
     font-size: 1.3rem;
@@ -141,6 +152,10 @@ onMounted(() => {
     margin: 0;
     flex: 1;
     text-align: left;
+
+    @media (max-width: 700px) {
+      font-size: 1.1rem;
+    }
   }
   &__status {
     font-size: 0.96rem;
@@ -322,7 +337,7 @@ onMounted(() => {
     border: 1px solid #856404;
     border-radius: 2rem;
     padding: 10px 30px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
@@ -334,6 +349,30 @@ onMounted(() => {
       color: #fff;
     }
 
+    ion-icon {
+      font-size: 1.3rem;
+    }
+  }
+
+  &__error-link {
+    text-decoration: none;
+    color: var(--blue);
+    font-size: 1rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+
+    span {
+      font-weight: 700;
+    }
+
+    &:hover {
+      color: var(--blue-dark);
+      text-decoration: underline;
+    }
+    
     ion-icon {
       font-size: 1.3rem;
     }

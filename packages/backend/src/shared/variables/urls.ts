@@ -67,6 +67,13 @@ export enum ComplaintApiUrl {
     DELETE_COMPLAINT = '/delete',
     RESPOND_COMPLAINT = '/respond',
 }
+
+export enum AnalyticsApiUrl {
+    CONTROLLER = 'analytics',
+    GET_ANALYTICS = '/get/all',
+    GET_AI_INSIGHTS = '/get/ai/insights',
+}
+
 export enum AuthApiUrl {
     CONTROLLER = 'auth',
     LOGIN = '/login',

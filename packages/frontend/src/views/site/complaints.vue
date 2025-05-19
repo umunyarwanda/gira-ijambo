@@ -49,7 +49,7 @@
             <div class="complaint-card__header">
               <h3 class="complaint-card__title">{{ complaint.title }}</h3>
               <span :class="['complaint-card__status', 'complaint-card__status--' + complaint.status.toLowerCase()]">
-                {{ complaint.status }}
+                {{ complaint.status.split('_').join(' ') }}
               </span>
             </div>
             <p class="complaint-card__desc line-clamp-2">{{ complaint.description }}</p>
@@ -94,19 +94,12 @@ useHead({
   title: 'Kurikirana Ikibazo'
 })
 
-const filteredComplaints = computed(() => {
-  if (!search.value) return myComplaints.value;
-  return myComplaints.value.filter(c =>
-    c.title.toLowerCase().includes(search.value.toLowerCase()) ||
-    c.description.toLowerCase().includes(search.value.toLowerCase())
-  );
-});
 const getComplaint = async () => {
   if (!search.value) {
     toast.add({
       severity: 'error',
       summary: 'Error',
-      detail: 'Ikibazo sasubizo nta nzego z\'ibisubizo',
+      detail: 'Shyiramo kode y\'ikibazo cyawe',
       life: 3000
     });
     return;
@@ -123,7 +116,7 @@ const getComplaint = async () => {
     toast.add({
       severity: 'error',
       summary: 'Error',
-      detail: 'Ikibazo sasubizo nta nzego z\'ibisubizo',
+      detail: 'Kode y\'ikibazo cyawe ntibashije kuboneka, Ongera ugerageze',
       life: 3000
     });
   } finally {
@@ -170,11 +163,15 @@ onMounted(() => {
     border: 1.5px solid var(--blue);
     border-radius: 10px;
     overflow: hidden;
+
+    @media (max-width: 720px) {
+      max-width: 90%;
+    }
     input {
       flex: 1;
       padding: 0.7rem 1.2rem;
       border-radius: 2rem;
-      font-size: .98rem;
+      font-size: .97rem;
       box-shadow: none;
       border: none;
       outline: none;
@@ -188,7 +185,7 @@ onMounted(() => {
       color: #fff;
       border: none;
       padding: 0.7rem 1.2rem;
-      font-size: 1rem;
+      font-size: .97rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -206,13 +203,15 @@ onMounted(() => {
     }
   }
   &__list {
-    // display: flex;
-    // flex-direction: column;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    // max-width: 700px;
     margin: 0 auto;
+    padding: 0 20px;
+
+    @media (max-width: 850px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 
   &__title {
@@ -257,9 +256,13 @@ onMounted(() => {
     margin: 0;
     flex: 1;
     text-align: left;
+
+    @media (max-width: 700px) {
+      font-size: .98rem;
+    }
   }
   &__status {
-    font-size: 0.96rem;
+    font-size: 0.85rem;
     font-weight: 700;
     padding: 5px 13px;
     border-radius: 10px;
@@ -288,8 +291,9 @@ onMounted(() => {
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    font-size: 0.97rem;
+    font-size: 0.95rem;
     color: #555;
+    flex-wrap: wrap;
     &-items {
       display: flex;
       align-items: center;
@@ -300,6 +304,7 @@ onMounted(() => {
       padding: 5px 23px;
       background: #a7a6a646;
       border-radius: 50px;
+      font-size: .9rem;
       transition: background 0.2s;
     }
 

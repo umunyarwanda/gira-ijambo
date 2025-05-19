@@ -47,18 +47,34 @@ body {
   color: #101820;
   margin-bottom: 0.5rem;
   text-align: center;
+
+  @media (max-width: 700px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 1.5rem;
+  }
 }
 
 .track-header {
   width: 100%;
   background: #eaedf01c;
-  padding: 120px 0 60px;
+  padding: 120px 30px 60px;
   text-align: center;
   &__title {
     font-size: 2.2rem;
     font-weight: 800;
     color: #101820;
     margin-bottom: 1.2rem;
+
+    @media (max-width: 700px) {
+      font-size: 1.8rem;
+    }
+
+    @media (max-width: 500px) {
+      font-size: 1.4rem;
+    }
   }
   &__desc {
     font-size: 1.1rem;
@@ -67,6 +83,14 @@ body {
     margin: 0 auto;
     font-weight: 400;
     line-height: 1.5;
+
+    @media (max-width: 700px) {
+      font-size: 1rem;
+    }
+
+    @media (max-width: 500px) {
+      font-size: .98rem;
+    }
   }
 }
 
@@ -79,6 +103,10 @@ body {
   user-select: none;
   -webkit-user-select: none;
   -webkit-user-drag: none;
+
+  @media (max-width: 600px) {
+    font-size: 1.4rem;
+  }
   .logo-main {
     color: var(--black);
   }
@@ -126,6 +154,10 @@ label {
     width: 100%;
     max-width: 1300px;
     margin: 0 auto;
+
+    @media (max-width: 1300px) {
+      max-width: 100%;
+    }
   }
 }
 
@@ -164,6 +196,11 @@ label {
   height: 100vh;
   width: 100%;
   overflow-y: auto;
+  background: rgba(92, 92, 92, 0.063);
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
 
   &-cover {
     overflow: hidden;
@@ -172,11 +209,14 @@ label {
     z-index: 1;
     margin: auto;
     background: linear-gradient(135deg, var(--primary-theme), var(--third-theme));
-    // background-image: url('@/assets/images/auth-cover.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
+
+    @media (max-width: 800px) {
+      display: none;
+    }
 
     img {
       width: 100%;
@@ -193,7 +233,11 @@ label {
       z-index: 2;
       text-align: center;
       width: 100%;
-      padding: 0 2.5rem;
+      padding: 0 70px;
+
+      @media (max-width: 1090px) {
+        padding: 0 20px;
+      }
       
       h1 {
         font-size: 1.2rem;
@@ -291,8 +335,21 @@ label {
     &-container {
       width: 480px;
       margin: 0 auto;
+
+      @media (max-width: 1090px) {
+        width: 100%;
+      }
+
       &.container-min {
         width: 500px;
+
+        @media (max-width: 1090px) {
+          width: 93%;
+        }
+
+        @media (max-width: 800px) {
+          width: 90%;
+        }
       }
 
       .auth-component {

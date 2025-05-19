@@ -9,11 +9,7 @@
 
     <div class="auth-page-form">
       <div class="auth-page-form-container" :class="{'container-min': true}">
-        <div class="auth-component">
-          <div class="auth-page-form-container-logo logo-bg">
-            <!-- <img :src=Logo alt=""> -->
-          </div>
-      
+        <div class="auth-component">      
           <div class="auth-component-title">
             <h1>Ikaze nanone</h1>
             <p>Ikaze nanone kuri <span>Gira Ijambo</span> - Injira muri konti yawe</p>
@@ -23,7 +19,7 @@
       
           <form class="form" @submit.prevent="loginUser">
             <div class="form-group">
-              <label for="usernameOrEmail">Emeyili (Email) <small title="This field is required">*</small></label>
+              <label for="usernameOrEmail">Emeyili (Email) <b>&nbsp; [Koresha admin@user.com]</b> <i>*</i></label>
               <div class="flex flex-row gap-2">
                 <InputText 
                   id="email" 
@@ -36,8 +32,8 @@
             </div>
             <div class="form-group">
               <div class="label-has-link">
-                <label for="">Ijambobanga (Password) <i>*</i></label>
-                <span @click="$emit('switchPage', 'FORGOT')">Wibagiwe ijambobanga ?</span>
+                <label for="">Ijambobanga (Password) <b>&nbsp; [Koresha 123]</b> <i>*</i></label>
+                <!-- <span @click="$emit('switchPage', 'FORGOT')">Wibagiwe ijambobanga ?</span> -->
               </div>
               <div class="flex flex-row gap-2">
                 <Password 
@@ -50,11 +46,11 @@
             </div>
             <Button label="Sign In" :loading="isLoading" type="submit" />
           </form>
-          <div class="form-navigate">
+          <!-- <div class="form-navigate">
             <p :class="{'disabled': isLoading}">
               Nta konti ufite ? <router-link to="/sign-up">Fungura konti hano</router-link>
             </p>
-          </div>
+          </div> -->
       
           
         </div>

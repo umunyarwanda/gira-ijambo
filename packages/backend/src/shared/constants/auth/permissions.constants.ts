@@ -94,4 +94,11 @@ export const permissions = {
       EUserRole.SUPER_ADMIN, EUserRole.AGENCY_ADMIN, 
     ],
   },
+
+  // Analytics
+  getAnalytics: {
+    roles: [
+      EUserRole.SUPER_ADMIN, 
+    ],
+  },
 };

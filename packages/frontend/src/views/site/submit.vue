@@ -15,11 +15,19 @@
       <h2 class="confirmation__title">Ikibazo cyawe cyoherejwe!</h2>
       <p class="confirmation__desc">
         Murakoze gutanga ikibazo cyanyu.<br>
-        Uzajya ukurikirana aho ikibazo cyawe kigeze ukoresheje nomero y'ihariye ikurikira.
+        Uzajya ukurikirana aho ikibazo cyawe kigeze ukoresheje kode y'ihariye ikurikira.
       </p>
-      <div class="confirmation__code-block">
-        <span class="confirmation__code-label">Nomero y'ihariye</span>
-        <span class="confirmation__code" @click="copyCode">{{ submittedCode }}</span>
+      <div>
+
+        <div class="confirmation__code-block">
+          <span class="confirmation__code-label">Kode y'ihariye</span>
+          <div class="confirmation__code-block-inner">
+            <span class="confirmation__code" @click="copyCode">{{ submittedCode }}</span>
+            <button class="confirmation__code-copy" @click="copyCode">
+              <ion-icon :name="isCodeCopied ? 'checkmark-outline' : 'copy-outline'"></ion-icon>
+            </button>
+          </div>
+        </div>
       </div>
       <div class="confirmation__actions">
         <router-link class="confirmation__btn confirmation__btn--home" :to="{ name: 'home' }">Subira Ahabanza</router-link>
@@ -45,6 +53,7 @@
               optionValue="id" 
               placeholder="Hitamo ikiciro" 
               :loading="isLoadingCategories" 
+              :required="true"
               filter
             />
           </div>
@@ -76,12 +85,6 @@
             <Textarea id="description" v-model="form.description" rows="4" autoResize placeholder="Andika hano ibisobanuro birambuye by'ikibazo cyawe..." />
           </div>
         </div>
-        <!-- <div class="submit-form__row">
-          <div class="submit-form__field submit-form__field--full">
-            <label for="file">Amadosiye y'ingererka (optional)</label>
-            <input id="file" type="file" />
-          </div>
-        </div> -->
         <div class="submit-form__actions">
           <Button type="submit" label="Ohereza Ikibazo" icon="pi pi-arrow-right" iconPos="right" :loading="isLoadingSubmit" />
         </div>
@@ -116,12 +119,33 @@ useHead({
 const telephone = ref<number | null>(null);
 const form = ref<ICreateComplaintReq>({
   names: '',
-  email: '',
+  email: null,
   telephone: '',
   title: '',
   description: '',
-  categoryId: 0,
+  categoryId: null,
 });
+
+// Load saved user info from localStorage
+const loadSavedUserInfo = () => {
+  const savedInfo = localStorage.getItem('userInfo');
+  if (savedInfo) {
+    const { names, email, telephone } = JSON.parse(savedInfo);
+    form.value.names = names || '';
+    form.value.email = email || null;
+    form.value.telephone = telephone || '';
+  }
+};
+
+// Save user info to localStorage
+const saveUserInfo = () => {
+  const userInfo = {
+    names: form.value.names,
+    email: form.value.email,
+    telephone: form.value.telephone
+  };
+  localStorage.setItem('userInfo', JSON.stringify(userInfo));
+};
 
 const categoriesStore = useCategoriesStore();
 const complaintsStore = useComplaintsStore();
@@ -130,15 +154,21 @@ const isLoadingCategories = ref(false);
 const isLoadingSubmit = ref(false);
 const showConfirmation = ref(false);
 const submittedCode = ref('');
+const isCodeCopied = ref(false);
 
 const copyCode = () => {
   navigator.clipboard.writeText(submittedCode.value);
+  isCodeCopied.value = true;
   toast.add({
     severity: 'success',
     summary: 'Success',
-    detail: 'Code copied to clipboard',
+    detail: 'Ukopiye kode y\'ikibazo cyawe / Code copied to clipboard',
     life: 3000,
   });
+
+  setTimeout(() => {
+    isCodeCopied.value = false;
+  }, 3000);
 }
 
 const getCategories = async () => {
@@ -169,6 +199,14 @@ const getCategories = async () => {
 }
 
 const submitComplaint = async () => {
+  if (form.value.categoryId === 0) {
+    toast.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: "Hitamo ikiciro cy'ikibazo cywe",
+      life: 3000,
+    });
+  }
   isLoadingSubmit.value = true;
   try {
     const response = await complaintsStore[ComplaintsActionTypes.CREATE_COMPLAINT](form.value);
@@ -176,6 +214,10 @@ const submitComplaint = async () => {
     submittedCode.value = data.trackingCode;
     showConfirmation.value = true;
     complaintsStore.SAVE_COMPLAINT(data.trackingCode);
+    
+    // Save user info after successful submission
+    saveUserInfo();
+    
   } catch (error: any) {
     if (error.response?.data.message && Array.isArray(error.response?.data.message)) {
       toast.add({
@@ -200,6 +242,7 @@ const submitComplaint = async () => {
 
 onMounted(() => {
   getCategories();
+  loadSavedUserInfo();
 });
 </script>
 
@@ -207,7 +250,7 @@ onMounted(() => {
 .submit-form-section {
   width: 100%;
   background: #fff;
-  padding: 2rem 0 2rem 0;
+  padding: 20px 15px;
   display: flex;
   justify-content: center;
 }
@@ -215,7 +258,7 @@ onMounted(() => {
   background: #fff;
   border-radius: 1.2rem;
   box-shadow: 0 0 130px -10px rgba(0, 0, 0, 0.122);
-  padding: 2.5rem 2.2rem 2rem 2.2rem;
+  padding: 40px 30px;
   max-width: 900px;
   margin: 0 auto;
   display: flex;
@@ -223,6 +266,10 @@ onMounted(() => {
   gap: 1.5rem;
   width: 100%;
   border: 1px solid #c4cad1;
+
+  @media (max-width: 700px) {
+    padding: 30px 20px;
+  }
 }
 .submit-form__row {
   display: flex;
@@ -306,7 +353,7 @@ onMounted(() => {
 .confirmation {
   width: 100%;
   min-height: 60vh;
-  padding: 2rem 0;
+  padding: 30px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -380,11 +427,34 @@ onMounted(() => {
     user-select: all;
   }
 
+  &__code-block-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+      outline: none;
+      color: var(--blue);
+      font-size: 1.2rem;
+      transition: color 0.2s;
+      &:hover {
+        color: var(--blue);
+      }
+    }
+  }
+
   &__actions {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
     width: 100%;
+    flex-wrap: wrap;
     justify-content: center;
   }
 

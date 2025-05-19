@@ -16,12 +16,12 @@
       </div>
       <div class="user-drop" :class="{ active: isDropActive }">
         <ul>
-          <li>
+          <!-- <li>
             <a href="">
               <span class="material-symbols-rounded">person</span>
               Profile
             </a>
-          </li>
+          </li> -->
           <li>
             <a href="">
               <span class="material-symbols-rounded">logout</span>

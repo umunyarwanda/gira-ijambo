@@ -6,16 +6,22 @@ import { IsEmail } from "class-validator";
 import { ICreateComplaintReq } from "~/shared/interfaces/complaints/request/IComplaintReq.dto";
 
 export class CreateComplaintDto implements ICreateComplaintReq {
-  @IsEmail()
+  @IsEmail({}, {
+    message: 'Imeyili ntiyanditse neza',
+  })
   @ApiProperty({
     description: 'The email of the user',
     example: 'test@test.com',
   })
-  @IsOptional()
+  @IsOptional({
+    message: 'Andika imeyili yawe',
+  })
   email?: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsNotEmpty({
+    message: 'Andika amazina yawe',
+  })
   @ApiProperty({
     description: 'The names of the user',
     example: 'John Doe',
@@ -23,7 +29,9 @@ export class CreateComplaintDto implements ICreateComplaintReq {
   names: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsNotEmpty({
+    message: 'Andika inyito y\'ikibazo',
+  })
   @ApiProperty({
     description: 'The title of the complaint',
     example: 'Water Leak',
@@ -31,7 +39,9 @@ export class CreateComplaintDto implements ICreateComplaintReq {
   title: string;
 
   @IsPhoneNumber('RW')
-  @IsNotEmpty()
+  @IsNotEmpty({
+    message: 'Andika nimero ya telefoni yawe',
+  })
   @ApiProperty({
     description: 'The telephone of the user',
     example: '+250788123456',
@@ -39,7 +49,9 @@ export class CreateComplaintDto implements ICreateComplaintReq {
   telephone: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsNotEmpty({
+    message: 'Andika ibisobanuro by\'ikibazo',
+  })
   @ApiProperty({
     description: 'The description of the complaint',
     example: 'There has been a water leak on Kicukiro Avenue for the past 3 days. The street is flooded and water is being wasted.',
@@ -55,7 +67,9 @@ export class CreateComplaintDto implements ICreateComplaintReq {
   // agencyId?: number;
 
   @IsNumber()
-  @IsNotEmpty()
+  @IsNotEmpty({
+    message: 'Hitamo ikiciro cy\'ikibazo',
+  })
   @ApiProperty({
     description: 'The id of the category',
     example: 1,
