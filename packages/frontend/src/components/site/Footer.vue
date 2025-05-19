@@ -17,10 +17,10 @@
             <a href="tel:+0785324625"><ion-icon name="call-outline"></ion-icon> +250 785 324 625</a>
           </li>
           <li>
-            <a href="mailto:mugabohussein0@gmail.com"><ion-icon name="mail-outline"></ion-icon> mugabohussein0@gmail.com</a>
+            <a href="mailto:mugabohussein00@gmail.com"><ion-icon name="mail-outline"></ion-icon> mugabohussein00@gmail.com</a>
           </li>
           <li>
-            <a href="https://goo.gl/maps/1234567890" target="_blank" rel="noopener"><ion-icon name="location-outline"></ion-icon> Kigali, Rwanda</a>
+            <a href="#" target="_blank" rel="noopener"><ion-icon name="location-outline"></ion-icon> Kigali, Rwanda</a>
           </li>
         </ul>
       </div>

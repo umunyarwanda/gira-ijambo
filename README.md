@@ -6,7 +6,7 @@
 
 ## 🚀 Live Demo
 
-👉 [Access the Live Demo](https://giraijambo.rw)
+👉 [Access the Live Demo](https://gira-ijambo.vercel.app)
 
 ---
 
